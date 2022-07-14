@@ -1,26 +1,9 @@
 import Head from "next/head";
-import Image from "next/image";
+
 import styles from "../styles/Home.module.css";
-import { createClient } from "contentful";
-import Blogpost from "../component/Blogpost";
-import { Personalize } from "@ninetailed/experience.js-next";
-import { useId } from "react";
+import Link from "next/link";
 
-export async function getStaticProps() {
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  });
-  const response = await client.getEntries({ content_type: "blog" });
-
-  return {
-    props: {
-      blog: response.items,
-    },
-  };
-}
-
-export default function Home({ blog }) {
+export default function Home() {
   // console.log(blog)
 
   return (
@@ -33,44 +16,33 @@ export default function Home({ blog }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to Raeder!!</h1>
 
-        <p className={styles.description}>
-          An article library where readers are recognized for always reading
-        </p>
-        <div className={styles.flex}>
-          <div className="w-45p">
-            <div className={styles.card}>
-              <Personalize
-                id="fir"
-                component={Blogpost}
-                text={blog?.map((e) => e.fields).find((e) => !e.nt_audience)}
-                variants={blog
-                  ?.map((e) => e.fields)
-                  .filter((e) => e.nt_audience)
-                  .map((e) => ({
-                    text: e,
-                    audience: { id: e.nt_audience.fields.nt_audience_id },
-                  }))}
-              ></Personalize>
-            </div>
+      <main className={styles.main}>
+        <div className={styles.leftContainer}>
+          <div>
+            <h1 className={`${styles.fonts} large`}>
+              Welcome to a library where{" "}
+              <span className="text-accent">
+                Readers are rewarded for reading
+              </span>{" "}
+              with so much Elegance!!
+            </h1>
+            <article className="line-height-2">
+              There is no better place find excellence and better advance your
+              knowledge than being on Raeder. Get the best articles from only
+              the top writers. s simply dummy text of the printing and
+              typesetting industry.
+            </article>
+
+            <button className={styles.homeButton} onClick>
+              Let's get Reading
+            </button>
           </div>
         </div>
+        <div className={styles.rightContainer}>
+          <img src="/post.svg" alt="post" className={styles.imgSize} />
+        </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   );
 }

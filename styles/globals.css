@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100;1,200&display=swap');
 html,
 body {
   padding: 0;
@@ -12,5 +14,27 @@ a {
 }
 
 * {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
+  font-family: 'Fascinate', cursive;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1.large {
+  font-family: 'Fascinate', cursive;
+}
+
+h1.large span {
+  font-family: 'Fascinate', cursive;
+  /* font-size: larger; */
+}
+
+.text-accent {
+  color: blue;
+}
+.text-white {
+  color: white;
+}
+
+.line-height-2 {
+  line-height: 2rem;
 }

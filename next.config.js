@@ -3,8 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
-      { source: '/', destination: '/login', permanent: true }, // a permanent redirect
+      { source: "/", destination: "/login", permanent: true }, // a permanent redirect
     ];
   },
-}
-module.exports = nextConfig
+};
+module.exports = nextConfig;
